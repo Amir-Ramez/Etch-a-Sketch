@@ -1,6 +1,14 @@
 const container = document.querySelector('.container');
 function createDivs() {
     let sideLength = prompt('Enter side length: ');
+
+    if (sideLength > 100) {
+        alert('Max length is 100');
+        return createDivs();
+    }
+
+    container.innerHTML = '';
+
     for (let i = 0; i < sideLength * sideLength; ++i) {
         const div = document.createElement('div');
         div.style.background = '#ffffff';
