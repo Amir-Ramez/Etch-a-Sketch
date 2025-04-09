@@ -10,3 +10,30 @@ function createDivs() {
         container.appendChild(div);
     }
 }
+
+createDivs();
+
+let isMouseDown = false;
+document.addEventListener('mousedown', () => {
+    isMouseDown = true;
+});
+document.addEventListener('mouseup', () => {
+    isMouseDown = false;
+});
+
+const divs = document.querySelectorAll('.container div');
+divs.forEach((div) => {
+    div.addEventListener('mouseover', () => {
+        if (isMouseDown) div.style.background = 'black';
+        else if (div.style.background !== 'black')
+            div.style.background = 'purple';
+    });
+
+    div.addEventListener('mouseleave', () => {
+        if (div.style.background !== 'black') div.style.background = '#ffffff';
+    });
+
+    div.addEventListener('click', () => {
+        div.style.background = 'black';
+    });
+});
