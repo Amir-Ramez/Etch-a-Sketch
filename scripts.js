@@ -15,6 +15,21 @@ function createDivs() {
         div.style.border = '1px solid black';
         div.style.width = `calc(100%/ ${sideLength})`;
         div.style.height = `calc(100%/ ${sideLength})`;
+
+        div.addEventListener('mouseover', () => {
+            if (isMouseDown) div.style.background = 'black';
+            else if (div.style.background !== 'black')
+                div.style.background = 'purple';
+        });
+
+        div.addEventListener('mouseleave', () => {
+            if (div.style.background !== 'black')
+                div.style.background = '#ffffff';
+        });
+
+        div.addEventListener('click', () => {
+            div.style.background = 'black';
+        });
         container.appendChild(div);
     }
 }
@@ -31,21 +46,4 @@ document.addEventListener('mousedown', () => {
 });
 document.addEventListener('mouseup', () => {
     isMouseDown = false;
-});
-
-const divs = document.querySelectorAll('.container div');
-divs.forEach((div) => {
-    div.addEventListener('mouseover', () => {
-        if (isMouseDown) div.style.background = 'black';
-        else if (div.style.background !== 'black')
-            div.style.background = 'purple';
-    });
-
-    div.addEventListener('mouseleave', () => {
-        if (div.style.background !== 'black') div.style.background = '#ffffff';
-    });
-
-    div.addEventListener('click', () => {
-        div.style.background = 'black';
-    });
 });
