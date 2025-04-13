@@ -21,6 +21,10 @@ function createDivs() {
 
 createDivs();
 
+const resetBtn = document
+    .querySelector('.resetBtn')
+    .addEventListener('click', createDivs);
+
 let isMouseDown = false;
 document.addEventListener('mousedown', () => {
     isMouseDown = true;
